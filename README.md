@@ -64,7 +64,8 @@ Before you begin, ensure you have the following installed on your system:
    
    ```
    cd ..
-   ´´´
+   ```
+
    ```
     ln -s build/PongGame
    ```
