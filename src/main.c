@@ -12,11 +12,10 @@
 #define BODY_WIDTH 20
 #define BODY_HEIGHT 100
 
-#define SPEED_FACTOR 1.5
+#define SPEED_FACTOR 4.0
 
-#define BALL_INIT_SPEED 1.5
-#define BALL_MAX_SPEED 5.0
-#define BALL_MIN_SPEED 2.0
+#define BALL_MAX_SPEED 13.0
+#define BALL_MIN_SPEED 7.0
 #define BALL_SPEED_STEP 0.1
 
 #define BALL_ANGLE_STEP (M_PI / 36) 
@@ -180,9 +179,9 @@ bool insideHeightMargins(int y) {
 void updatePlayerPos(struct Player *p, bool isUp) {
     
     if (isUp && insideHeightMargins(p->body.y - 2)) {
-        p->body.y -= 2;
+        p->body.y -= SPEED_FACTOR;
     } else if (!isUp && insideHeightMargins(p->body.y + 2 + BODY_HEIGHT)) {
-        p->body.y += 2; 
+        p->body.y += SPEED_FACTOR; 
     }
 }
 
@@ -234,7 +233,6 @@ int main(int argc, char* argv[]) {
     struct Score score;
     initScore(&score);
     const char* fontFilename = "fonts/OpenSans-Light.ttf";
-    //updateScore(&score, renderer, fontFilename);
 
     enum gameState status;
 
@@ -301,7 +299,7 @@ int main(int argc, char* argv[]) {
         SDL_RenderPresent(renderer);
 
         // .
-        SDL_Delay(16);
+        SDL_Delay(10);
         iterations++;
     }
     SDL_DestroyTexture(score.message);
