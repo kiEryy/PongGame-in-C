@@ -61,7 +61,11 @@ Before you begin, ensure you have the following installed on your system:
 6. **Run the Game**
 
    After the build process completes, create a symbolic link to the base folder:
-    ```cd ..
+   
+   ```
+   cd ..
+   ´´´
+   ```
     ln -s build/PongGame
    ```
    you can run the game executable:
